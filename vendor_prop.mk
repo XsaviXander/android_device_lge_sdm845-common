@@ -129,3 +129,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Waterproof
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.support.waterproof=true
+
+# Butt
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.lge.logical.camera=3 \
+    ro.vendor.lge.aux.camera=2 \
+    ro.vendor.lge.physical.camera=5 \
+    vendor.lge.wlan.chip.vendor=qcom \
+    vendor.lge.wlan.chip.version=wcn399x \
+    vendor.lge.wlan.passpoint_setting=true \
+    ro.vendor.qti.sys.fw.bservice_enable=true

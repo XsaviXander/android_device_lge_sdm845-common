@@ -24,7 +24,7 @@ import android.hardware.SensorManager;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
-import androidx.preference.PreferenceManager;
+import android.support.v7.preference.PreferenceManager;
 
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 
