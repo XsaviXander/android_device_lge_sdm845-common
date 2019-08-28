@@ -116,7 +116,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # USB
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config.extra=none
+    persist.sys.usb.config.extra=mtp,adb
 
 # Voice assistant
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -137,5 +137,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.lge.physical.camera=5 \
     vendor.lge.wlan.chip.vendor=qcom \
     vendor.lge.wlan.chip.version=wcn399x \
-    vendor.lge.wlan.passpoint_setting=true \
-    ro.vendor.qti.sys.fw.bservice_enable=true
+    vendor.lge.wlan.passpoint_setting=true 
