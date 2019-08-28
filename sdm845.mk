@@ -104,7 +104,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/audio/mirrorlink_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mirrorlink_audio_policy_configuration.xml
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/audio/2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
+    $(COMMON_PATH)/audio/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
     $(COMMON_PATH)/audio/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     $(COMMON_PATH)/audio/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
