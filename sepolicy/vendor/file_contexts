@@ -5,5 +5,4 @@
 /vzw(/.*)?                      u:object_r:vzw_file:s0
 /carrier(/.*)?                  u:object_r:carrier_file:s0
 /eri(/.*)?                      u:object_r:eri_file:s0
-/vendor/bin/hw/android\.hardware\.power@1\.2-service\.judy			u:object_r:hal_power_default_exec:s0
 # /vendor/firmware_mnt(/.*)?
