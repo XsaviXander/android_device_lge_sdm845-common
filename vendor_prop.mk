@@ -236,3 +236,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.lge.sar_keeponoff=on \
     persist.vendor.lge.sar_dependmode=on \
     persist.vendor.lge.sar_fakestatus=off
+    
