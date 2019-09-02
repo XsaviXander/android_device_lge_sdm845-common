@@ -1,3 +1,4 @@
+    
 /*
  * Copyright (C) 2015 The CyanogenMod Project
  *               2017-2019 The LineageOS Project
