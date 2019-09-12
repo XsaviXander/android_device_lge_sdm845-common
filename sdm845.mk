@@ -26,7 +26,6 @@ PRODUCT_ENFORCE_RRO_TARGETS := \
     framework-res
 
 # Properties
--include $(LOCAL_PATH)/system_prop.mk
 -include $(LOCAL_PATH)/vendor_prop.mk
 
 # AAPT
@@ -51,6 +50,10 @@ AB_OTA_PARTITIONS += \
     vendor \
     vbmeta \
     dtbo
+
+# IRQ
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -108,14 +111,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mirrorlink_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mirrorlink_audio_policy_configuration.xml
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
+    $(LOCAL_PATH)/audio/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0 \
-    libbt-vendor
+    libbthost_if
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 3120
@@ -123,9 +125,9 @@ TARGET_SCREEN_WIDTH := 1440
 
 # Boot control
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl:64 \
+    android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service \
-    bootctrl.sdm845 \
+    bootctrl.sdm845
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
@@ -138,10 +140,8 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.frameworks.displayservice@1.0 \
     android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service_64 \
-    libxml2 \
+    android.hardware.camera.provider@2.4-service \
     Snap \
     vendor.qti.hardware.camera.device@1.0.vendor
 
@@ -180,7 +180,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1
+    android.hardware.biometrics.fingerprint@2.1 \
 
 # FM packages
 PRODUCT_PACKAGES += \
@@ -227,10 +227,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-hotword.xml:system/etc/permissions/privapp-permissions-hotword.xml
 
-# IPA
+# IPACM
 PRODUCT_PACKAGES += \
     ipacm \
-    IPACM_cfg.xml
+    IPACM_cfg.xml \
+    libipanat \
+    liboffloadhal
 
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -274,9 +276,11 @@ PRODUCT_PACKAGES += \
     libOmxAmrEnc \
     libOmxCore \
     libOmxEvrcEnc \
+    libOmxG711Enc \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
+    libOmxVidcCommon \
     libstagefrighthw
 
 # Permissions
@@ -392,15 +396,6 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
-# RIL
-PRODUCT_PACKAGES += \
-    android.hardware.radio@1.2 \
-    android.hardware.radio.config@1.0 \
-    android.hardware.secure_element@1.0 \
-    libprotobuf-cpp-full \
-    librmnetctl \
-    libxml2
-
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
@@ -411,23 +406,22 @@ PRODUCT_PACKAGES += \
     android.hardware.vr@1.0-impl \
     android.hardware.vr@1.0-service
 
-# WiFi
+# Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
-    libwifi-hal-qcom \
     hostapd \
     libwpa_client \
-    vendor.qti.hardware.wifi.hostapd@1.0.vendor \
-    vendor.qti.hardware.wifi.supplicant@2.0.vendor \
+    vendor.lge.hardware.wifi.hostapd@1.0.vendor \
+    vendor.lge.hardware.wifi.supplicant@2.0.vendor \
+    wifi-mac-generator \
     wpa_supplicant \
     wpa_supplicant.conf
 
-
+    
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
-    $(LOCAL_PATH)/wifi/wifi_concurrency_cfg.txt:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wifi_concurrency_cfg.txt \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/qca_cld/WCNSS_qcom_cfg.ini
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
 
 # WiFi Display
 PRODUCT_PACKAGES += \
