@@ -26,7 +26,8 @@
 LOCAL_PATH := $(call my-dir)
 
 ifneq ($(filter judypn,$(TARGET_DEVICE)),)
-include $(call all-makefiles-under,$(LOCAL_PATH))
+  subdir_makefiles=$(call first-makefiles-under,$(LOCAL_PATH))
+  $(foreach mk,$(subdir_makefiles),$(info including $(mk) ...)$(eval include $(mk)))
 
 # A/B builds require us to create the mount points at compile time.
 # Just creating it for all cases since it does not hurt.
