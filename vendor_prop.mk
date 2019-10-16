@@ -1,10 +1,35 @@
-#
-# vendor props for lge sdm845-common
-#
-
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    af.fast_track_multiplier=1
+    af.fast_track_multiplier=1 \
+    audio.deep_buffer.media=true \
+    audio.offload.video=true \
+    persist.vendor.audio.fluence.speaker=true \
+    persist.vendor.audio.fluence.voicecall=true \
+    persist.vendor.audio.fluence.voicerec=false \
+    persist.vendor.audio.ras.enabled=false \
+    ro.vendor.audio.sdk.fluencetype=none \
+    ro.vendor.audio.sdk.ssr=false \
+    vendor.audio_hal.period_size=480 \
+    vendor.audio.dolby.ds2.enabled=false \
+    vendor.audio.dolby.ds2.hardbypass=false \
+    vendor.audio.flac.sw.decoder.24bit=true \
+    vendor.audio.hw.aac.encoder=true \
+    vendor.audio.noisy.broadcast.delay=600 \
+    vendor.audio.offload.buffer.size.kb=32 \
+    vendor.audio.offload.gapless.enabled=true \
+    vendor.audio.offload.multiaac.enable=true \
+    vendor.audio.offload.multiple.enabled=false \
+    vendor.audio.offload.passthrough=false \
+    vendor.audio.offload.pstimeout.secs=3 \
+    vendor.audio.offload.track.enable=true \
+    vendor.audio.parser.ip.buffer.size=262144 \
+    vendor.audio.safx.pbe.enabled=false \
+    vendor.audio.tunnel.encode=false \
+    vendor.audio.use.sw.alac.decoder=true \
+    vendor.audio.use.sw.ape.decoder=true \
+    vendor.fm.a2dp.conc.disabled=true \
+    vendor.voice.path.for.pcm.voip=false \
+    persist.vendor.lge.3rd.speaker.prot.enable=on
 
 # Audio - DAC
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -21,27 +46,41 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.chip.vendor=qcom \
+    persist.bluetooth.bluetooth_audio_hal.disabled=true \
     persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac \
+    vendor.qcom.bluetooth.soc=cherokee \
     vendor.bluetooth.soc=cherokee \
     qcom.bluetooth.soc=cherokee
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.camera.expose.aux=1
+    persist.camera.expose.aux=1 \
+    camera.disable_zsl_mode=true \
+    persist.vendor.camera.HAL3.enabled=1 \
+    persist.vendor.camera.expose.aux=1 \
+    persist.camera.camera2=true \
+    
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     dev.pm.dyn_samplingrate=1 \
     ro.opengles.version=196610 \
-    ro.sf.lcd_density=560
+    ro.sf.lcd_density=560 \
+    ro.vendor.display.cabl=0 \
+    vendor.display.enable_default_color_mode=1 \
+    debug.egl.hw=0 \
+    debug.sf.hw=0 \
+    debug.sf.latch_unsignaled=1 \
+    persist.demo.hdmirotationlock=false \
+    persist.sys.sf.native_mode=0 
+
+# DRM
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true
 
 # Factory reset partition
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/bootdevice/by-name/frp
-
-# HDR
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qcom.hdr.config=/vendor/etc/hdr_tm_config.xml
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -50,10 +89,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.nfc.port=I2C
-
-# Perf
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=libqti-perfd-client.so
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -75,19 +110,31 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.debug.sensors.daemon=d \
-    persist.vendor.debug.sensors.hal=d \
-    persist.vendor.sensors.diag_buffer_mode=false
+    persist.vendor.sensors.diag_buffer_mode=false \
+    ro.qti.sensors.dev_ori=true \
+    ro.qti.sensors.dpc=true \
+    ro.qti.sensors.pmd=true \
+    ro.qti.sensors.mot_detect=true \
+    ro.qti.sensors.multishake=true \
+    ro.qti.sensors.sta_detect=true \
+    persist.sensors.pocket_delay=1000 \
+    persist.sensors.knock_delay=1000 \
+    persist.sensors.wul_multilevel=5 \
+    persist.sensors.wul_thresh0=2 \
+    persist.sensors.wul_thresh1=10 \
+    persist.sensors.wul_thresh2=15 \
+    persist.sensors.wul_thresh3=3100 \
+    persist.sensors.wul_thresh4=10000 \
+    persist.sensors.wul_delay=3000 \
+    persist.sensors.onhand.en=0 \
+    ro.vendor.sensors.maghalcal=false \
+    ro.vendor.sensors.wu=false
 
 # Sensors (Sar)
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.lge.sar_keeponoff=on \
     persist.vendor.lge.sar_dependmode=on \
-    persist.vendor.lge.sar_fakestatus=off 
-
-# USB
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config.extra=none
+    persist.vendor.lge.sar_fakestatus=off
 
 # Voice assistant
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -101,139 +148,35 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.support.waterproof=true
 
-# Butt
+# OEM Unlock reporting
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	ro.oem_unlock_supported=1
+
+# Brightness
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.lge.logical.camera=3 \
-    ro.vendor.lge.aux.camera=2 \
-    ro.vendor.lge.physical.camera=5 \
-    ro.telephony.default_network=9 \
-    persist.vendor.lge.sms.disablelog=64 \
-    ro.sf.lcd_density=560 \
-    persist.sys.strictmode.disable=true \
-    persist.vendor.lge.service.crash.enable=0 \
-    persist.sys.ssr.restart_level=ALL_ENABLE \
-    ro.cp_system_other_odex=1 \
-    ro.vendor.lge.gota.enable=0 \
-    persist.vendor.audio.speaker.prot.enable=false \
-    vendor.lge.audio.hifi_rec.normal_gain=0 \
-    vendor.lge.audio.hifi_rec.normal_lcf=75 \
-    vendor.lge.audio.hifi_rec.normal_lmt=0 \
-    vendor.lge.audio.hifi_rec.concert_gain=-140 \
-    vendor.lge.audio.hifi_rec.concert_lcf=0 \
-    vendor.lge.audio.hifi_rec.concert_lmt=0 \
-    vendor.lge.audio.hifi_rec.offset_gain=39 \
-    persist.vendor.lge.3rd.speaker.prot.enable=on \
-    ro.vendor.lge.config.hifi_enhance_support=1 \
-    vendor.audio.offload.gapless.enabled=true \
-    persist.vendor.lge.audio.hifi_adv_support=1 \
-    persist.vendor.lge.audio.nsenabled=ON \
-    ro.vendor.lge.vib_magnitude_index=0,26,46,62,78,94,110,127 \
-    vendor.lge.fm_gain_control_headset=0.7 \
-    vendor.lge.fm_gain_control_speaker=1.0 \
-    persist.vendor.lge.audio.handset_rx_type=DEFAULT \
-    ro.vendor.audio.sdk.fluencetype=nxp \
-    ro.config.vc_call_vol_steps=7 \
-    persist.vendor.lge.audio.hifi_dac=OFF \
-    vendor.voice.path.for.pcm.voip=false \
-    vendor.audio.offload.multiple.enabled=false \
-    audio.offload.video=false \
-    vendor.audio.offload.pcm.16bit.enable=false \
-    vendor.audio.dolby.ds2.enabled=false \
-    vendor.audio.dolby.ds2.hardbypass=false \
-    persist.vendor.bt.a2dp_offload_cap=false \
-    vendor.audio.safx.pbe.enabled=false \
-    dalvik.vm.heapstartsize=8m \
-    dalvik.vm.heapgrowthlimit=256m \
-    dalvik.vm.heapsize=512m \
-    dalvik.vm.heaptargetutilization=0.25 \
-    dalvik.vm.heapminfree=4m \
-    dalvik.vm.heapmaxfree=16m \
-    ro.carrier=unknown \
-    ro.dalvik.vm.native.bridge=0 \
-    ro.vendor.lge.platform.type=lamp \
-    ro.vendor.lge.product.type=generic \
-    persist.sys.disable_rescue=true \
-    ro.logd.size=1M \
-    persist.vendor.lge.service.main.enable=0 \
-    persist.vendor.lge.service.system.enable=0 \
-    persist.vendor.lge.service.radio.enable=0 \
-    persist.vendor.lge.service.events.enable=0 \
-    persist.vendor.lge.service.kernel.enable=0 \
-    persist.vendor.lge.service.power.enable=0 \
-    persist.vendor.lge.service.fg.enable=0 \
-    persist.vendor.lge.service.bsm.enable=0 \
-    persist.vendor.cne.feature=0 \
-    persist.vendor.radio.disable_retry=true \
-    persist.vendor.dpm.feature=0 \
-    ro.vendor.lge.laop=1 \
-    ro.vendor.lge.laop.treble=1 \
-    ro.vendor.lge.capp_cupss.rootdir=/oem/OP \
-    ro.vendor.lge.capp_cupss.op.dir=/oem/OP \
-    ro.vendor.lge.capp_cupss.persistlg.dir=/mnt/vendor/persist-lg \
-    ro.vendor.lge.sbp=1 \
-    ro.vendor.lge.singleca.enable=1 \
-    ro.vendor.lge.op.integration=1 \
-    ro.vendor.lge.sbp.opresize_enabled=1 \
-    persist.vendor.qcomsysd.enabled=1 \
-    ro.vendor.extension_library=libqti-perfd-client.so \
-    persist.vendor.radio.apm_sim_not_pwdn=1 \
-    persist.vendor.radio.sib16_support=1 \
-    persist.vendor.radio.custom_ecc=1 \
-    persist.vendor.radio.rat_on=combine \
-    persist.backup.ntpServer=0.pool.ntp.org \
-    sys.vendor.shutdown.waittime=500 \
-    ro.frp.pst=/dev/block/bootdevice/by-name/frp \
-    ro.vendor.at_library=libqti-at.so \
-    persist.vendor.qti.games.gt.prof=1 \
-    ro.opengles.version=196610 \
-    persist.demo.hdmirotationlock=false \
-    ro.vendor.display.cabl=0 \
-    debug.sf.hw=0 \
-    debug.egl.hw=0 \
-    debug.sf.latch_unsignaled=1 \
-    vendor.display.enable_default_color_mode=1 \
-    vendor.display.disable_rotator_ui=0 \
-    vendor.display.disable_prim_rot=1 \
-    persist.sys.sf.native_mode=0 \
-    vendor.display.hdmi_cfg_idx=0 \
-    vendor.audio_hal.period_size=480 \
-    persist.vendor.audio.fluence.voicecall=true \
-    persist.vendor.audio.fluence.voicerec=false \
-    persist.vendor.audio.fluence.speaker=true \
-    vendor.audio.tunnel.encode=false \
-    persist.vendor.audio.ras.enabled=false \
-    vendor.audio.offload.buffer.size.kb=32 \
-    vendor.audio.offload.track.enable=true \
-    audio.deep_buffer.media=true \
-    vendor.audio.offload.multiaac.enable=true \
-    vendor.audio.offload.passthrough=false \
-    ro.vendor.audio.sdk.ssr=false \
-    vendor.audio.parser.ip.buffer.size=262144 \
-    vendor.audio.flac.sw.decoder.24bit=true \
-    vendor.audio.use.sw.alac.decoder=true \
-    vendor.audio.use.sw.ape.decoder=true \
-    vendor.audio.hw.aac.encoder=true \
-    vendor.audio.noisy.broadcast.delay=600 \
-    vendor.audio.offload.pstimeout.secs=3 \
-    ro.af.client_heap_size_kbyte=7168 \
-    vendor.audio_hal.in_period_size=144 \
-    vendor.audio_hal.period_multiplier=3 \
-    vendor.audio.adm.buffering.ms=2 \
-    vendor.audio.hal.output.suspend.supported=true \
-    vendor.audio.enable.dp.for.voice=false \
-    qemu.hw.mainkeys=0 \
-    vendor.qcom.bluetooth.soc=cherokee \
-    rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so \
-    ro.vendor.qti.sys.fw.bg_apps_limit=60 \
-    persist.vendor.lge.gnss.week_number=1738 \
-    persist.vendor.lge.gnss.lppe_support=11 \
-    persist.vendor.lge.service.chg_mode=LGE,QNOVO \
-    persist.vendor.tb.disallowed=1 \
-    persist.vendor.ctm.disallowed=1 \
-    persist.vendor.debug.sensors.daemon=d \
-    persist.vendor.debug.sensors.hal=d \
-    persist.vendor.sensors.diag_buffer_mode=false \
-    persist.vendor.lge.sar_keeponoff=on \
-    persist.vendor.lge.sar_dependmode=on \
-    persist.vendor.lge.sar_fakestatus=off
-    
+	sys.autobrightness_optimize=true
+
+# Qcom System Daemon
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.vendor.qcomsysd.enabled=1
+
+# USB debugging at boot
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.sys.usb.config=mtp,adb \
+	ro.adb.secure=0 \
+	ro.secure=0 \
+	ro.debuggable=1
+
+# Memory optimizations
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.vendor.qti.sys.fw.bservice_enable=true
+
+# Perf
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.sys.perf.debug=false \
+	ro.vendor.extension_library=libqti-perfd-client.so \
+	ro.vendor.qti.sys.fw.bg_apps_limit=60 \
+	vendor.display.disable_skip_validate=1 \
+	vendor.display.perf_hint_window=50 \
+	sdm.debug.disable_rotator_split=1 \
+	sdm.perf_hint_window=50
