@@ -49,12 +49,18 @@ while [ "$1" != "" ]; do
 done
 
 if [ -z "$SRC" ]; then
-    SRC=/home/xsavtyri/files/405qa
+    SRC=/home/xsavtyri/files
 fi
 
 # Initialize the helper
 setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" false "$CLEAN_VENDOR"
 
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
+
+COMMON_BLOB_ROOT="/home/xsavtyri/ass/vendor/lge/sdm845-common/proprietary"
+
+sed -i "s/android.hidl.base@1.0.so/libhidlbase.so\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/" "${COMMON_BLOB_ROOT}/lib64/libwfdnative.so" "${COMMON_BLOB_ROOT}/lib/libwfdnative.so"
+sed -i "s/android.hidl.base@1.0.so/libhidlbase.so\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/" "${COMMON_BLOB_ROOT}/lib64/libwfdnative.so" "${COMMON_BLOB_ROOT}/lib64/liblocationservice_jni.so"
+sed -i "s/android.hidl.base@1.0.so/libhidlbase.so\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/" "${COMMON_BLOB_ROOT}/lib64/libwfdnative.so" "${COMMON_BLOB_ROOT}/lib64/libxt_native.so"
 
 "$MY_DIR"/setup-makefiles.sh
