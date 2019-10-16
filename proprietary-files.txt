@@ -194,6 +194,7 @@ vendor/lib64/libsdmcore.so
 vendor/lib64/libsdmextension.so
 vendor/lib64/libsdmutils.so
 vendor/lib64/libtinyxml2_1.so
+vendor/lib64/libdrm.so
 vendor/lib64/vendor.display.config@1.0.so
 vendor/lib64/vendor.display.config@1.1.so
 vendor/lib64/vendor.display.config@1.2.so
@@ -364,6 +365,20 @@ etc/permissions/privapp-permissions-com.qualcomm.location.xml
 -framework/com.qti.location.sdk.jar
 framework/izat.xt.srv.jar
 vendor/lib/libpcas_vendor.so
+etc/permissions/com.qti.location.sdk.xml
+etc/permissions/com.qualcomm.location.xml
+etc/permissions/izat.xt.srv.xml
+etc/permissions/privapp-permissions-com.qualcomm.location.xml
+framework/com.qti.location.sdk.jar
+framework/izat.xt.srv.jar
+lib64/liblocationservice_jni.so
+lib64/libxt_native.so
+lib64/vendor.qti.gnss@1.0.so
+lib64/vendor.qti.gnss@1.1.so
+lib64/vendor.qti.gnss@1.2.so
+lib64/vendor.qti.gnss@2.0.so
+lib64/vendor.qti.gnss@2.1.so
+-priv-app/com.qualcomm.location/com.qualcomm.location.apk
 vendor/lib64/libpcas.so
 vendor/lib64/libpcas_vendor.so
 vendor/bin/hw/vendor.qti.gnss@2.0-service
@@ -908,11 +923,8 @@ vendor/bin/cpfirmware
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
 vendor/lib64/libwvhidl.so
 
-# WiFi
+# Wifi
 vendor/bin/cnss-daemon
-vendor/etc/wifi/fstman.ini
-vendor/lib64/vendor.lge.hardware.wifi.hostapd@1.0.so
-vendor/lib64/vendor.lge.hardware.wifi.supplicant@2.0.so
 vendor/bin/fstman
 
 # WiFi Display
