@@ -28,8 +28,7 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-pe
 
-PRODUCT_ENFORCE_RRO_TARGETS := \
-    framework-res
+PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Properties
 -include $(LOCAL_PATH)/vendor_prop.mk
@@ -208,6 +207,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     GestureHandler
 
+# IPv6
+PRODUCT_PACKAGES += \
+    ethertypes \
+    libebtc
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-impl \
@@ -284,21 +288,6 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libstagefright_wfd \
     libstagefrighthw
-
-# GPS
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl-qti \
-    android.hardware.gnss@1.0-service-qti \
-    libgnss \
-    libgnsspps
-
-PRODUCT_PACKAGES += \
-    flp.conf \
-    gps.conf \
-    izat.conf \
-    lowi.conf \
-    sap.conf \
-    xtwifi.conf
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -412,6 +401,15 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
+
+# RIL
+PRODUCT_PACKAGES += \
+    android.hardware.radio@1.2 \
+    android.hardware.radio.config@1.0 \
+    android.hardware.secure_element@1.0 \
+    libprotobuf-cpp-full \
+    librmnetctl \
+    libxml2
 
 # USB
 PRODUCT_PACKAGES += \
