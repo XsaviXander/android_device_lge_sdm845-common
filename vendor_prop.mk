@@ -43,6 +43,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.lge.audio.hifi_rec.concert_lmt=0 \
     vendor.lge.audio.hifi_rec.offset_gain=39
 
+# GNSS
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.overlay.izat.optin=rro
+
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.chip.vendor=qcom \
@@ -110,31 +114,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.sensors.diag_buffer_mode=false \
-    ro.qti.sensors.dev_ori=true \
-    ro.qti.sensors.dpc=true \
-    ro.qti.sensors.pmd=true \
-    ro.qti.sensors.mot_detect=true \
-    ro.qti.sensors.multishake=true \
-    ro.qti.sensors.sta_detect=true \
-    persist.sensors.pocket_delay=1000 \
-    persist.sensors.knock_delay=1000 \
-    persist.sensors.wul_multilevel=5 \
-    persist.sensors.wul_thresh0=2 \
-    persist.sensors.wul_thresh1=10 \
-    persist.sensors.wul_thresh2=15 \
-    persist.sensors.wul_thresh3=3100 \
-    persist.sensors.wul_thresh4=10000 \
-    persist.sensors.wul_delay=3000 \
-    persist.sensors.onhand.en=0 \
-    ro.vendor.sensors.maghalcal=false \
-    ro.vendor.sensors.wu=false
+    persist.vendor.sensors.diag_buffer_mode=false
 
 # Sensors (Sar)
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.lge.sar_keeponoff=on \
     persist.vendor.lge.sar_dependmode=on \
-    persist.vendor.lge.sar_fakestatus=off
+    persist.vendor.lge.sar_fakestatus=off 
 
 # Voice assistant
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -152,14 +138,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.oem_unlock_supported=1
 
-# Brightness
-PRODUCT_PROPERTY_OVERRIDES += \
-	sys.autobrightness_optimize=true
-
-# Qcom System Daemon
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.vendor.qcomsysd.enabled=1
-
 # USB debugging at boot
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp,adb \
@@ -173,10 +151,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
-	persist.sys.perf.debug=false \
-	ro.vendor.extension_library=libqti-perfd-client.so \
-	ro.vendor.qti.sys.fw.bg_apps_limit=60 \
-	vendor.display.disable_skip_validate=1 \
-	vendor.display.perf_hint_window=50 \
-	sdm.debug.disable_rotator_split=1 \
-	sdm.perf_hint_window=50
+    ro.vendor.extension_library=libqti-perfd-client.so \
+    ro.vendor.qti.sys.fw.bg_apps_limit=60
