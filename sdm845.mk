@@ -27,16 +27,13 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(COMMON_PATH)/overlay \
-    $(COMMON_PATH)/overlay-lineage
+    $(COMMON_PATH)/overlay
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += $(COMMON_PATH)/overlay-lineage/lineage-sdk
 
 # Properties
 -include $(COMMON_PATH)/system_prop.mk
 -include $(COMMON_PATH)/vendor_prop.mk
--include frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk
 	
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
@@ -193,10 +190,6 @@ PRODUCT_PACKAGES += \
 	qcom.fmradio.xml
 
 PRODUCT_BOOT_JARS += qcom.fmradio
-
-# Gesture handler
-PRODUCT_PACKAGES += \
-    GestureHandler
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -360,10 +353,6 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service \
     thermal.sdm845
 
-# Touch
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.judy
-
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
@@ -407,5 +396,5 @@ PRODUCT_PACKAGES += \
     libnl \
     libqdMetaData.system
 
-PRODUCT_BOOT_JARS += \
-    WfdCommon
+#PRODUCT_BOOT_JARS += \
+#    WfdCommon
