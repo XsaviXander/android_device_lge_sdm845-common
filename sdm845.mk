@@ -27,11 +27,9 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(COMMON_PATH)/overlay \
-    $(COMMON_PATH)/overlay-havoc
+    $(COMMON_PATH)/overlay
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += $(COMMON_PATH)/overlay-havoc/lineage-sdk
 
 # Properties
 TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
